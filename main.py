@@ -4,10 +4,28 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import NoSuchElementException
 
-urls = ['https://www.meijer.com/shopping/product/boston-warehouse-figural-mug-burger-18oz/2660220593.html',
-        'https://www.meijer.com/shopping/product/lindt-lindor-assorted-chocolate-candy-truffles-chocolates-with-smooth-melting-truffle-center-15-2-oz-bag/954201519.html']
+urls = []
 
-print("Starting...")
+
+print("Application starting...")
+
+
+new_urls_file = open('new_urls.txt', 'r')
+
+while True:
+
+    url = new_urls_file.readline()
+
+    if not url:
+        break
+    else:
+        urls.append(url)
+
+
+if len(urls) == 0:
+    exit()
+
+
 
 
 driver = uc.Chrome()
@@ -24,10 +42,12 @@ for url in urls:
         item_regular_price = 1
 
     except NoSuchElementException as e:
-        print("The item is not on sale.\n Error Message: " + e)
+        print("Could not locate sale price element. Most likely the item is not on sale. \n" + str(e))
     except WebDriverException as e:
-        print("A webdriver error has occurred. This can be caused by being unable to connect to the website.\n Error Message: " + e)
+        print("A webdriver error has occurred. This can be caused by being unable to connect to the website.\n" + str(e))
 
+
+print("Application ending...")
 
 driver.close()
 time.sleep(1)
