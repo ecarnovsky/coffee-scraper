@@ -3,8 +3,10 @@ import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import NoSuchElementException
+from sale_item import SaleItem
 
 urls = []
+sale_items = []
 
 
 print("Application starting...")
@@ -38,8 +40,10 @@ for url in urls:
         sale_price = driver.find_element(by=By.CSS_SELECTOR, value="span.product-info__sale-price>span").text
         print("The item is on sale for: " + sale_price)
 
-        item_name = "name"
-        item_regular_price = 1
+        name = "name"
+        original_price = 1
+        sale_item = SaleItem(name, sale_price, original_price, url)
+        sale_items.append(sale_item)
 
     except NoSuchElementException as e:
         print("Could not locate sale price element. Most likely the item is not on sale. \n" + str(e))
