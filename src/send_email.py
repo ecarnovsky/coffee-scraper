@@ -1,7 +1,10 @@
+from dotenv import load_dotenv
+import os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import smtplib, ssl 
 import configparser
+
 
 
 config = configparser.ConfigParser()
@@ -9,9 +12,9 @@ config.read('config.ini')
 
 
 port = 465
-receiving_email = config['EMAIL']['receivingemail']
-sending_email = config['EMAIL']['sendingemail']
-password = config['EMAIL']['password']
+receiving_email = os.getenv('RECEIVING_EMAIL')
+sending_email = os.getenv('SENDING_EMAIL')
+password = os.getenv('EMAIL_PASSWORD')
 
 
 message = MIMEMultipart("alternative")
