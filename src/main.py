@@ -12,7 +12,7 @@ sale_items = []
 print("Application starting...")
 
 
-new_urls_file = open('new_urls.txt', 'r')
+new_urls_file = open('src/urls/new_urls.txt', 'r')
 
 while True:
 
