@@ -8,7 +8,10 @@ from email_service import EmailService
 
 def main():
 
-    urls = get_urls_from_file("src/urls/new_urls.txt")
+    NEW_URLS_PATH = "src/urls/new_urls.txt"
+    OLD_URLS_PATH = "src/urls/old_urls.txt"
+
+    urls = get_urls_from_file(NEW_URLS_PATH)
     sale_items = []
     driver = uc.Chrome()
 
@@ -42,13 +45,38 @@ def main():
         except Exception as e:
             print("An error has occurred while trying to send an email. " + str(e))
 
-        # UPDATE URL FILES 
+
+
+
+        with open(OLD_URLS_PATH, 'a') as file:
+            for sale_item in sale_items:
+                file.write(sale_item.url)
+
+
+
+        new_urls = urls
+
+        for sale_item in sale_items:
+            new_urls = list(filter(lambda url : url != sale_item.url, new_urls))
+
+ 
+        with open(NEW_URLS_PATH, 'w') as file:
+            for url in new_urls:
+                file.write(url)
+            
+
+
 
     print("Application ending...")
 
-    # driver.close()
+
     driver.quit()
-    time.sleep(1)
+    try:
+        time.sleep(0.1)
+    except OSError:
+        pass
+
+
 
 
 def get_urls_from_file(path):
