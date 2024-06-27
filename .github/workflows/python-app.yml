@@ -34,4 +34,4 @@ jobs:
         SENDING_EMAIL: ${{ secrets.SENDING_EMAIL }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
-          python src/main.js
+          python src/main.py
