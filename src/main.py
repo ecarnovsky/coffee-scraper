@@ -24,8 +24,8 @@ def main():
             sale_price = driver.find_element(by=By.CSS_SELECTOR, value="span.product-info__sale-price>span").text
             print("The item is on sale for: " + sale_price)
 
-            name = "name"
-            original_price = 1
+            name = driver.find_element(by=By.CSS_SELECTOR, value="h1.product-info__title").text
+            original_price =  driver.find_element(by=By.CSS_SELECTOR, value="span.product-info__regular-price > span.product-info__regular-price").text
             sale_item = SaleItem(name, sale_price, original_price, url)
             sale_items.append(sale_item)
 
@@ -46,7 +46,8 @@ def main():
 
     print("Application ending...")
 
-    driver.close()
+    # driver.close()
+    driver.quit()
     time.sleep(1)
 
 
