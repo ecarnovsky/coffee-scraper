@@ -29,11 +29,11 @@ class EmailService:
     sale_item_str = ""
     for item in sale_items:
        sale_item_str += f"""<br><li>
-        <a href=\"{item.url}\">{item.name}</a>: Original Price: {item.original_price}, Sale Price: {item.sale_price}
+        <a href=\"{item.url}\">{item.name}</a>: Original Price: {item.original_price}, <div style=\"color:red; display:inline\"> Sale Price: {item.sale_price}</div>
        </li>"""
     html = f"""\
     <html>
-      <body>
+      <body style=\"font-size:18px;\">
         <p>
             The following item(s) are on sale: <br>
             <ul>
