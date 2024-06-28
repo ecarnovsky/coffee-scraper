@@ -3,3 +3,4 @@ Ever have an item you want to buy but it just about never goes on sale? I ran in
 
 ## How to Use
 To use the app, add the urls of the items you want to track to the `/src/urls/new_urls.txt` file.  Create a `.env` file at the root and add the variables `RECEIVING_EMAIL`, `SENDING_EMAIL`, and `EMAIL_PASSWORD`. Then periodically run `src/main.py` to check for sales.
+# cs-copy
