@@ -41,3 +41,6 @@ jobs:
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
           python src/main.py
+          git add .
+          git commit -m "Update urls"
+          git push
