@@ -6,9 +6,9 @@ name: Python application
 on:
   schedule:
    #runs every 10 minutes
-     # - cron: '*/10 * * * *'
+     - cron: '*/10 * * * *'
 
-    - cron: '39 2 */2 * *'
+    # - cron: '39 2 */2 * *'
 
 permissions:
   contents: write 
@@ -40,9 +40,6 @@ jobs:
         SENDING_EMAIL: ${{ secrets.SENDING_EMAIL }}
         EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
       run: |
-          python src/main.py
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "Update urls"
-          git push
+          python src/main.py
