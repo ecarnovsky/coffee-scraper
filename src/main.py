@@ -1,3 +1,4 @@
+import os
 import time
 import undetected_chromedriver as uc
 from selenium.webdriver.common.by import By
@@ -5,16 +6,21 @@ from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import NoSuchElementException
 from sale_item import SaleItem
 from email_service import EmailService
+import subprocess
 from pyvirtualdisplay import Display
+
 
 
 def main():
 
+
+
     NEW_URLS_PATH = "src/urls/new_urls.txt"
     OLD_URLS_PATH = "src/urls/old_urls.txt"
 
-    display = Display(visible=0, size=(800, 800))  
-    display.start()
+    if(os.getenv("GITHUB_ACTIONS") == True):
+        display = Display(visible=0, size=(800, 800))  
+        display.start()
 
     urls = get_urls_from_file(NEW_URLS_PATH)
     sale_items = []
@@ -68,6 +74,12 @@ def main():
         with open(NEW_URLS_PATH, 'w') as file:
             for url in new_urls:
                 file.write(url)
+
+        if(os.getenv("GITHUB_ACTIONS") == True):
+            result = subprocess.run(['bash', './bot-push.sh'], capture_output=True, text=True)
+            if(result.stderr):
+                print(result.stderr)
+
             
 
 
