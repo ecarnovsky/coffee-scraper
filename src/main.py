@@ -5,11 +5,16 @@ from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import NoSuchElementException
 from sale_item import SaleItem
 from email_service import EmailService
+from pyvirtualdisplay import Display
+
 
 def main():
 
     NEW_URLS_PATH = "src/urls/new_urls.txt"
     OLD_URLS_PATH = "src/urls/old_urls.txt"
+
+    display = Display(visible=0, size=(800, 800))  
+    display.start()
 
     urls = get_urls_from_file(NEW_URLS_PATH)
     sale_items = []
