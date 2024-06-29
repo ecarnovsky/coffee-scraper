@@ -18,7 +18,8 @@ def main():
     NEW_URLS_PATH = "src/urls/new_urls.txt"
     OLD_URLS_PATH = "src/urls/old_urls.txt"
 
-    if(os.getenv("GITHUB_ACTIONS") == True):
+
+    if os.getenv("GITHUB_ACTIONS") == "true":
         display = Display(visible=0, size=(800, 800))  
         display.start()
 
@@ -75,7 +76,7 @@ def main():
             for url in new_urls:
                 file.write(url)
 
-        if(os.getenv("GITHUB_ACTIONS") == True):
+        if os.getenv("GITHUB_ACTIONS") == "true":
             result = subprocess.run(['bash', './bot-push.sh'], capture_output=True, text=True)
             if(result.stderr):
                 print(result.stderr)
