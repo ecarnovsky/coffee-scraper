@@ -1,5 +1,5 @@
 # Coffee Scraper
-Ever have an item you want to buy but it just about never goes on sale? I ran into this issue with a coffee mug. After consistently checking the price for several weeks, I decided to build a web scraper to do it for me. The web scraper is written in Python and uses Selenium along with a Chrome driver to load the item's webpage. The price is analyzed, and if on sale, an email is sent to you informing you of the new price. 
+This app uses Selenium to periodically check Meijer’s website for sales. Just copy and paste the urls of the items you want into the `new_urls.txt` file(place each url on a new line) and configure your email information. GitHub actions are set up to run the app every two days. If an item is found to be on sale, the item’s url is moved from `new_urls.txt` to `orl_urls.txt` and an email containing the item’s link is sent to the receiving email address.
 
 ## How to Use
 - Fork the repo
