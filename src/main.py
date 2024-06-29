@@ -35,7 +35,7 @@ def main():
 
         try:
             driver.get(url)
-            driver.implicitly_wait(8)
+            driver.implicitly_wait(10)
             sale_price = driver.find_element(by=By.CSS_SELECTOR, value="span.product-info__sale-price>span").text
             print("The item is on sale for: " + sale_price)
 
@@ -43,6 +43,7 @@ def main():
             original_price =  driver.find_element(by=By.CSS_SELECTOR, value="span.product-info__regular-price > span.product-info__regular-price").text
             sale_item = SaleItem(name, sale_price, original_price, url)
             sale_items.append(sale_item)
+            time. sleep(10)
 
         except NoSuchElementException as e:
             print("Could not locate sale price element. Most likely the item is not on sale. \n" + str(e))
