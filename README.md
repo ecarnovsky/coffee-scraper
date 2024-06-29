@@ -6,4 +6,4 @@ Ever have an item you want to buy but it just about never goes on sale? I ran in
 - Set `RECEIVING_EMAIL`, `SENDING_EMAIL`, and `EMAIL_PASSWORD` as repository secrets
 - Add the urls of the items you want to the `/src/urls/new_urls.txt` file
 
-And that's it! The items price will be checked every two days, and you will notified of any sales.
+And that's it! The item's price will be checked every two days, and you will notified of any sales.
