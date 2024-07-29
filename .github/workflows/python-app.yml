@@ -28,19 +28,13 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Install Chromium and xvfb
+    - name: Install Chromium, ChromeDriver, and xvfb
       run: |
+
         sudo apt-get update
-        sudo apt-get install -y unzip
-
-        sudo snap install chromium --channel=126.0.6478.182/stable
-
-        wget https://chromedriver.storage.googleapis.com/126.0.6478.182/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
-        sudo mv chromedriver /usr/local/bin/chromedriver
-        sudo chmod +x /usr/local/bin/chromedriver
-
-        sudo apt-get install -y xvfb=2:21.1.4-2ubuntu1.7~22.04.11
+        sudo apt-get install chromium-browser=92.0.4515.107-0ubuntu0.20.04.1
+        sudo apt-get install chromium-chromedriver=92.0.4515.107-0ubuntu0.20.04.1
+        sudo apt-get install xvfb
         
     - name: Run main.py
       env: 
