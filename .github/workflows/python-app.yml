@@ -32,8 +32,8 @@ jobs:
       run: |
 
         sudo apt-get update
-        sudo apt-get install chromium-browser=92.0.4515.107-0ubuntu0.20.04.1
-        sudo apt-get install chromium-chromedriver=92.0.4515.107-0ubuntu0.20.04.1
+        sudo apt-get install chromium-browser=85.0.4183.83-0ubuntu2.22.04.1
+        sudo apt-get install chromium-chromedriver=85.0.4183.83-0ubuntu2.22.04.1
         sudo apt-get install xvfb
         
     - name: Run main.py
